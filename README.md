@@ -1,4 +1,5 @@
-# END POINTS (With Basic Authentication):
+## API END POINTS (With Basic Authentication):
+```
 1. Get tasks (GET /api/tasks)
 2. Create task (POST /api/tasks)
 - JSON -> {"title": ""}
@@ -8,10 +9,10 @@
 - JSON -> {":id": ""}
 5. Reorder task (PUT /api/tasks/reorder)
 - ARRAY[JSON] -> [{"_id": ""}, {"_id": ""}, {"_id": ""}, ...] # Order will depend on the order of the array
+```
+I was thinking that I will structure the tasks as an array in the database, but to be realistic I decided to make a record of each task in the database. But on the reordering task the only approach I think would work is to do a loop depending on the array order.
 
-# I was thinking that I will structure the tasks as an array in the database, but to be realistic I decided to make a record of each task in the database. But on the reordering task the only approach I think would work is to do a loop depending on the array order.
-
-# Since this is juast a technical test. I included the .env file in the repository. Just for reference.
+Since this is just a technical test. I included the .env file in the repository. Just for reference.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
