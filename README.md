@@ -1,14 +1,14 @@
 ## API END POINTS (With Basic Authentication):
 ```
-1. Get tasks (GET /api/tasks)
-2. Create task (POST /api/tasks)
-- JSON -> {"title": ""}
-3. Update task (PUT /api/tasks)
-- JSON -> {"id": "", "new_title": ""}
-4. Remove task (DELETE /api/tasks)
-- JSON -> {":id": ""}
-5. Reorder task (PUT /api/tasks/reorder)
-- ARRAY[JSON] -> [{"_id": ""}, {"_id": ""}, {"_id": ""}, ...] # Order will depend on the order of the array
+1. Get tasks (GET /api/task)
+2. Create task (POST /api/task)
+# JSON = {"title": ""}
+3. Update task (PUT /api/task)
+# JSON = {"id": "", "new_title": ""}
+4. Remove task (DELETE /api/task)
+# JSON = {":id": ""}
+5. Reorder task (PUT /api/task/reorder)
+# ARRAY[JSON] = [{"_id": ""}, {"_id": ""}, {"_id": ""}, ...] # Order will depend on the order of the array
 ```
 I was thinking that I will structure the tasks as an array in the database, but to be realistic I decided to make a record of each task in the database. But on the reordering task the only approach I think would work is to do a loop depending on the array order.
 
