@@ -6,7 +6,7 @@
 3. Update task (PUT /api/task)
 # JSON = {"id": "", "new_title": ""}
 4. Remove task (DELETE /api/task)
-# JSON = {":id": ""}
+# JSON = {"id": ""}
 5. Reorder task (PUT /api/task/reorder)
 # ARRAY[JSON] = [{"_id": ""}, {"_id": ""}, {"_id": ""}, ...] # Order will depend on the order of the array
 ```
