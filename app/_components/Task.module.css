@@ -1,0 +1,26 @@
+.input {
+    font-size: 1rem;
+    padding: 0.4em 0.8em;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    background-color: transparent;
+    width: 50%;
+}
+
+.actions {
+    display: flex;
+    gap: 1em;
+}
+
+.actions button {
+    padding: 0.7em 1em;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+.actions button:hover {
+    scale: 1.3;
+}
