@@ -37,7 +37,6 @@ export default function Home() {
     if (await fetchedTasks.ok) {
       setTasks(await fetchedTasks.data);
     }
-    console.log(fetchedTasks);
   };
 
   return (

@@ -34,7 +34,6 @@ const Tasks = (props) => {
     dragItem.current = null;
     dragOverItem.current = null;
     setTasks(copyListItems);
-    console.log(copyListItems);
     const formData = { newOrder: copyListItems };
     try {
       const response = await fetch('/api/task/reorder', {
@@ -47,7 +46,6 @@ const Tasks = (props) => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      console.log(await response.json());
     } catch (error) {
       console.log(error);
     }

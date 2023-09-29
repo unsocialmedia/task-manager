@@ -20,7 +20,6 @@ const Task = ({ id, title, onTaskUpdate }) => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      console.log(await response.json());
       onTaskUpdate();
     } catch (error) {
       console.log(error);
@@ -45,7 +44,6 @@ const Task = ({ id, title, onTaskUpdate }) => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      console.log(await response.json());
     } catch (error) {
       console.log(error);
     }

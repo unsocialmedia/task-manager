@@ -26,7 +26,6 @@ const CreateTask = ({ onTaskAdd }) => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      console.log(await response.json());
     } catch (error) {
       console.log(error);
     }
