@@ -24,9 +24,18 @@ export async function PUT(req) {
       throw new Error(result);
     }
 
+    const bulkOps = [];
+
     for (const key in newOrder) {
-      await Task.updateOne({ _id: newOrder[key]._id }, { order: +key + 1 });
+      bulkOps.push({
+        updateOne: {
+          filter: { _id: newOrder[key]._id },
+          update: { $set: { order: +key + 1 } }, 
+        },
+      });
+      // await Task.updateOne({ _id: newOrder[key]._id }, { order: +key + 1 });
     }
+    Task.bulkWrite(bulkOps);
 
     return NextResponse.json({
       ok: true,
