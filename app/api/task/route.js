@@ -53,6 +53,14 @@ export async function POST(req) {
 
     const { title } = await req.json();
 
+    if (!title) {
+      return NextResponse.json({
+        ok: false,
+        status: 409,
+        message: 'Missing required parameter {title}.',
+      });
+    }
+
     const result = await connectMongoDB();
 
     if (!result.ok) {
@@ -62,7 +70,11 @@ export async function POST(req) {
     const existing = await Task.findOne({ title });
 
     if (existing) {
-      throw new Error('Task already exists');
+      return NextResponse.json({
+        ok: false,
+        status: 409,
+        message: 'Task Already Exists',
+      });
     }
 
     const count = await Task.countDocuments({});
@@ -96,6 +108,14 @@ export async function DELETE(req) {
     // End Auth
 
     const { id } = await req.json();
+
+    if (!id) {
+      return NextResponse.json({
+        ok: false,
+        status: 409,
+        message: 'Missing required parameter {id}.',
+      });
+    }
 
     const result = await connectMongoDB();
 
@@ -133,6 +153,18 @@ export async function PUT(req) {
 
     const { id, new_title } = await req.json();
 
+    if (!id || !new_title) {
+      let message = '';
+      if (!id && !new_title) message = 'Missing required parameters.';
+      if (!new_title) message = 'Missing required parameter {new_title}.';
+      if (!id) message = 'Missing required parameter {id}.';
+      return NextResponse.json({
+        ok: false,
+        status: 409,
+        message: message,
+      });
+    }
+
     const result = await connectMongoDB();
 
     if (!result.ok) {
@@ -143,7 +175,11 @@ export async function PUT(req) {
 
     if (existing) {
       if (id !== existing._id.toString()) {
-        throw new Error('Task already exists');
+        return NextResponse.json({
+          ok: false,
+          status: 409,
+          message: 'Task Already Exists',
+        });
       }
     }
 
